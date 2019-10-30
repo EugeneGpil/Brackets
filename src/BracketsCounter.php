@@ -15,7 +15,7 @@ class BracketsCounter
         for ($i=0; $i < $strlen; $i++) {
     
             if (strpos($acceptableSimbols, $str[$i]) === false) {
-                throw new InvalidArgumentException(
+                throw new \InvalidArgumentException(
                     'Invalid character "' . $str[$i] . '" in string "' . $str . '"'
                 );
             }
