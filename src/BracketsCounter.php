@@ -8,6 +8,7 @@ class BracketsCounter
     {
         $acceptableSimbols = "() \n\t\r";
         $bracketCounter = 0;
+        $invalidString = false;
     
         $strlen = strlen($str);
         for ($i=0; $i < $strlen; $i++) {
@@ -18,7 +19,7 @@ class BracketsCounter
                 );
             }
     
-            if ($str[$i] != '(' and $str[$i] != ')') {
+            if ($str[$i] != '(' and $str[$i] != ')' or $invalidString) {
                 continue;
             }
             
@@ -31,11 +32,11 @@ class BracketsCounter
             }
             
             if ($bracketCounter < 0) {
-                return false;
+                $invalidString = true;
             }
         }
         
-        if ($bracketCounter > 0) {
+        if ($bracketCounter > 0 or $invalidString) {
             return false;
         }
 

@@ -1,6 +1,6 @@
 {
     "name": "eugenegpil/bracketscounter",
-    "description": "Return 0 if number of '(' equal to number of ')'",
+    "description": "Handling '(())()' format string",
     "type": "library",
     "license": "proprietary",
     "authors": [
