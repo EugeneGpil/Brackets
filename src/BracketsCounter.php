@@ -7,8 +7,6 @@ class BracketsCounter
     public static function bracketsCounter($str) 
     {
         $acceptableSimbols = "() \n\t\r";
-    
-        $firstBracketFinded = false;
         $bracketCounter = 0;
     
         $strlen = strlen($str);
@@ -23,14 +21,7 @@ class BracketsCounter
             if ($str[$i] != '(' and $str[$i] != ')') {
                 continue;
             }
-    
-            if (!$firstBracketFinded) {
-                if ($str[$i] == ')') {
-                    return false;
-                }
-                $firstBracketFinded = true;
-            }
-    
+            
             if ($str[$i] == '(') {
                 $bracketCounter++;
             }
@@ -38,15 +29,17 @@ class BracketsCounter
             if ($str[$i] == ')') {
                 $bracketCounter--;
             }
-    
-            $lastBracket = $str[$i];
+            
+            if ($bracketCounter < 0) {
+                return false;
+            }
         }
-    
-        if ($lastBracket == '(') {
+        
+        if ($bracketCounter > 0) {
             return false;
         }
-    
-        return $bracketCounter;
+
+        return true;
     }
 }
 
